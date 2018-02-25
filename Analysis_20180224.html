@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Analysis_20180224.utf8</title>
+
+<script src="Analysis_20180224_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="Analysis_20180224_files/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="Analysis_20180224_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="Analysis_20180224_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="Analysis_20180224_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="Analysis_20180224_files/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles_20180224.css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p>The ReCounts project <a href="http://bowtie-bio.sourceforge.net/recount/" class="uri">http://bowtie-bio.sourceforge.net/recount/</a> is a Johns Hopkins University project that has made the transcript counts of processed RNA-Seq data from multiple published papers publicly available. My objective in the current project is to download and analyze the count data for one paper in particular: <em>“Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation.”</em> by <a href="https://www.ncbi.nlm.nih.gov/pubmed?term=20436464">Trapnell et. al., 2010</a>.</p>
+<p>The Trapnell paper performed RNA-Seq on the cell line C2C12 from C57BL/6 mice at 4 time points during a time course experiment. Cells were cultured in 20% fetal bovine serum in DMEM until confluent and then switched to low serum medium for 168 hours. The time points sampled were -24, 60, 120, and 168 hours after switching to low serum medium.</p>
+<p>The analysis that follows is broken into several key steps:</p>
+<ul>
+<li>Define key packages</li>
+<li>Data acquisition</li>
+<li>Data loading</li>
+<li>Data wrangling</li>
+<li>Diffusion mapping</li>
+<li>Differential expression analysis</li>
+<li>Conclusion</li>
+</ul>
+<section id="define-key-packages" class="level1">
+<h1><span class="header-section-number">1</span> Define key packages</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(magrittr)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># source(&quot;https://bioconductor.org/biocLite.R&quot;)</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># biocLite(&quot;destiny&quot;)</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">library</span>(destiny)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co"># biocLite(&quot;DESeq2&quot;)</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="kw">library</span>(DESeq2)</a></code></pre></div>
+</section>
+<section id="data-acquisition" class="level1">
+<h1><span class="header-section-number">2</span> Data acquisition</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Define data URLs.</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">count_url &lt;-<span class="st"> &quot;http://bowtie-bio.sourceforge.net/recount/countTables/trapnell_count_table.txt&quot;</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">phenotype_url &lt;-<span class="st"> &quot;http://bowtie-bio.sourceforge.net/recount/phenotypeTables/trapnell_phenodata.txt&quot;</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">gene_info_url &lt;-<span class="st"> &quot;http://bowtie-bio.sourceforge.net/recount/ivals/mouse_genes.txt&quot;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co"># Define file names.</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">count_file &lt;-<span class="st"> &quot;counts.txt&quot;</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">pheno_file &lt;-<span class="st"> &quot;phenotypes.txt&quot;</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">gene_info_file &lt;-<span class="st"> &quot;gene_info.txt&quot;</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co"># Download data files.</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="kw">download.file</span>(count_url, count_file)</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw">download.file</span>(phenotype_url, pheno_file)</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="kw">download.file</span>(gene_info_url, gene_info_file)</a></code></pre></div>
+</section>
+<section id="data-loading" class="level1">
+<h1><span class="header-section-number">3</span> Data loading</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Load data.</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">counts &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_delim</span>(count_file, <span class="dt">delim =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">phenos &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_delim</span>(pheno_file, <span class="dt">delim =</span> <span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">gene_info &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_delim</span>(gene_info_file, <span class="dt">delim =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)</a></code></pre></div>
+</section>
+<section id="data-wrangling" class="level1">
+<h1><span class="header-section-number">4</span> Data Wrangling</h1>
+<p>Here, the data is rearranged for subsequent analyses.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Create a wide count matrix for diffusion mapping (Sample x Gene).</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">count_mat &lt;-<span class="st"> </span>counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">column_to_rownames</span>(., <span class="st">&quot;gene&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">as.matrix</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">t</span>()</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co"># Create a stacked (tall) count tibble and add pheno data.</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">count_tib &lt;-<span class="st"> </span>counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(., <span class="dt">key =</span> <span class="st">&quot;Sample&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;Count&quot;</span>, <span class="op">-</span>gene)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">time_dict &lt;-<span class="st"> </span>phenos <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(., sample.id, time.point.hrs) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">deframe</span>()</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">count_tib &lt;-<span class="st"> </span>count_tib <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(., <span class="dt">Time =</span> time_dict[Sample])</a></code></pre></div>
+</section>
+<section id="diffusion-mapping" class="level1">
+<h1><span class="header-section-number">5</span> Diffusion mapping</h1>
+<p>Diffusion mapping or differentiation mapping is a Markov Chain-based method that allows the transition probabilities from different cell states to be identified. I used the diffusion mapping implementation in the <a href="https://academic.oup.com/bioinformatics/article/31/18/2989/241305"><em>destiny</em> package</a>.</p>
+<section id="perform-diffusion-mapping" class="level2">
+<h2><span class="header-section-number">5.1</span> Perform diffusion mapping</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Get the diffusion components for each sample.</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">dfm_object &lt;-<span class="st"> </span>count_mat <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span>destiny<span class="op">::</span><span class="kw">DiffusionMap</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span>destiny<span class="op">::</span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    ., </a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="dt">Sample =</span> <span class="kw">rownames</span>(count_mat),</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">    <span class="dt">Time =</span> <span class="kw">factor</span>(time_dict[Sample])</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">  )</a></code></pre></div>
+</section>
+<section id="plot-diffusion-mapping-result" class="level2">
+<h2><span class="header-section-number">5.2</span> Plot diffusion mapping result</h2>
+<p>With a sample size of 4, the results aren’t meaningful. I will acquire a larger sample size and analyze it in a future project.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">qplot</span>(DC1, DC2, <span class="dt">data =</span> dfm_object, <span class="dt">colour =</span> Time)<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<p><img src="images_20180224unnamed-chunk-7-1.png" style="display: block; margin: auto;" /></p>
+</section>
+</section>
+<section id="differential-expression-analysis" class="level1">
+<h1><span class="header-section-number">6</span> Differential expression analysis</h1>
+<section id="create-the-deseqdataset-object" class="level2">
+<h2><span class="header-section-number">6.1</span> Create the DESeqDataSet object</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">dds &lt;-<span class="st"> </span>DESeq2<span class="op">::</span><span class="kw">DESeqDataSetFromMatrix</span>(</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="dt">countData =</span> <span class="kw">as.data.frame</span>(counts) <span class="op">%&gt;%</span><span class="st"> </span>tibble<span class="op">::</span><span class="kw">column_to_rownames</span>(<span class="st">&quot;gene&quot;</span>),</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="dt">colData =</span> <span class="kw">DataFrame</span>(</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">    dplyr<span class="op">::</span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">      phenos, <span class="dt">Time =</span> <span class="kw">factor</span>(time.point.hrs)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">    )</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  ),</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">  <span class="dt">design =</span> <span class="op">~</span><span class="st"> </span>Time</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">)</a></code></pre></div>
+</section>
+<section id="analyze-expression-levels" class="level2">
+<h2><span class="header-section-number">6.2</span> Analyze expression levels</h2>
+<p>DESeq2 normalizes counts data by dividing the counts for each gene by the geometric mean of the corresponding gene counts as described <a href="https://chipster.csc.fi/manual/deseq2.html">here</a>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">dds &lt;-<span class="st"> </span>DESeq2<span class="op">::</span><span class="kw">DESeq</span>(dds)</a></code></pre></div>
+</section>
+<section id="extract-transformed-data" class="level2">
+<h2><span class="header-section-number">6.3</span> Extract transformed data</h2>
+<p>Two of the main transformation methods are the variance stabilizing transformation and the regularized log transformation.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Variance-stabilizing_transformation"><strong>Variance stabilizing transformation.</strong></a> The variance in expression levels is typically positively related to the expression level itself. To facilitate 1) graphical analyses and 2) the application of an ANOVA, the data is transformed in such a manner as to put the values for all genes on roughly the same scale. Since the relationship between the mean and variance of gene expression data often resembles a Poisson distribution, an <a href="https://en.wikipedia.org/wiki/Anscombe_transform">Anscome transformation</a> is often appropriate. This method requires technical replicates to estimate the dispersion and thus is not appropriate here.</li>
+<li><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8"><strong>Regularized log transformation.</strong></a> This method addresses the same problem as the variance stabilizing transformation, however, does so by taking the base 2 logarithm of the normalized counts data plus 0.5.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># Perform the regularized log transformation.</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">rld &lt;-<span class="st"> </span>DESeq2<span class="op">::</span><span class="kw">rlog</span>(dds, <span class="dt">blind =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+</section>
+<section id="heatmap-of-sample-distances" class="level2">
+<h2><span class="header-section-number">6.4</span> Heatmap of sample distances</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Create a matrix of sample distances.</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">sample_distances &lt;-<span class="st"> </span>rld <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="st">  </span>SummarizedExperiment<span class="op">::</span><span class="kw">assay</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw">t</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st">  </span><span class="kw">dist</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="st">  </span><span class="kw">as.matrix</span>()</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="kw">rownames</span>(sample_distances) &lt;-<span class="st"> </span>phenos<span class="op">$</span>time.point.hrs</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="kw">colnames</span>(sample_distances) &lt;-<span class="st"> </span>phenos<span class="op">$</span>time.point.hrs</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co"># Plot the sample distances matrix.</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">gplots<span class="op">::</span><span class="kw">heatmap.2</span>(</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">  sample_distances,</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">  <span class="dt">key =</span> <span class="ot">FALSE</span>, <span class="dt">trace =</span> <span class="st">&quot;none&quot;</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">)</a></code></pre></div>
+<p><img src="images_20180224unnamed-chunk-11-1.png" style="display: block; margin: auto;" /></p>
+</section>
+<section id="get-differential-expression-results" class="level2">
+<h2><span class="header-section-number">6.5</span> Get differential expression results</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># Calculate differential expression results.</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">diff_expr &lt;-<span class="st"> </span>DESeq2<span class="op">::</span><span class="kw">results</span>(dds)</a></code></pre></div>
+</section>
+<section id="plot-adjusted-p-values" class="level2">
+<h2><span class="header-section-number">6.6</span> Plot adjusted p-values</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># Create a dictionary to convert from ensemble_gene_id to gene_id.</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">gene_dict &lt;-<span class="st"> </span>gene_info <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(., ensembl_gene_id, external_gene_id) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">deframe</span>()</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co"># Extract differential expression data.</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">de_df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw">as_tibble</span>(diff_expr) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">    .,</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">    <span class="dt">ensemble_gene_id =</span> <span class="kw">rownames</span>(diff_expr),</a>
+<a class="sourceLine" id="cb12-11" data-line-number="11">    <span class="dt">Gene =</span> gene_dict[ensemble_gene_id]</a>
+<a class="sourceLine" id="cb12-12" data-line-number="12">  )</a>
+<a class="sourceLine" id="cb12-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co"># Plot the adjusted p-values as a histogram.</span></a>
+<a class="sourceLine" id="cb12-15" data-line-number="15"><span class="kw">qplot</span>(<span class="dt">x =</span> padj, <span class="dt">data =</span> de_df)<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-16" data-line-number="16"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb12-17" data-line-number="17"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))</a></code></pre></div>
+<p><img src="images_20180224unnamed-chunk-13-1.png" style="display: block; margin: auto;" /></p>
+</section>
+<section id="identify-differentially-expressed-genes" class="level2">
+<h2><span class="header-section-number">6.7</span> Identify differentially expressed genes</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">de_genes &lt;-<span class="st"> </span>de_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(., padj <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.05</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">arrange</span>(., padj, <span class="kw">abs</span>(log2FoldChange))</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">de_genes <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(., Gene, log2FoldChange, padj)</a></code></pre></div>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Gene</th>
+<th style="text-align: right;">log2FoldChange</th>
+<th style="text-align: right;">padj</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Apobec2</td>
+<td style="text-align: right;">8.893715</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hfe2</td>
+<td style="text-align: right;">9.088119</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cox6a2</td>
+<td style="text-align: right;">9.238797</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trim72</td>
+<td style="text-align: right;">9.346121</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tnni2</td>
+<td style="text-align: right;">9.355274</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hrc</td>
+<td style="text-align: right;">9.410595</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Csrp3</td>
+<td style="text-align: right;">9.428860</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Col6a2</td>
+<td style="text-align: right;">9.454907</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ip6k3</td>
+<td style="text-align: right;">9.614944</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Itgb1bp3</td>
+<td style="text-align: right;">9.778372</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mybph</td>
+<td style="text-align: right;">9.797550</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Myh3</td>
+<td style="text-align: right;">9.977070</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Lmod2</td>
+<td style="text-align: right;">10.089838</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ablim3</td>
+<td style="text-align: right;">10.154589</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tcap</td>
+<td style="text-align: right;">10.816857</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ckm</td>
+<td style="text-align: right;">11.004202</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Myl4</td>
+<td style="text-align: right;">11.434424</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dcn</td>
+<td style="text-align: right;">11.544165</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Casq1</td>
+<td style="text-align: right;">12.282554</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cox8b</td>
+<td style="text-align: right;">12.353716</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Actn2</td>
+<td style="text-align: right;">12.464607</td>
+<td style="text-align: right;">0.0374891</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Scn4a</td>
+<td style="text-align: right;">9.275600</td>
+<td style="text-align: right;">0.0393589</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chrng</td>
+<td style="text-align: right;">8.375566</td>
+<td style="text-align: right;">0.0405004</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mb</td>
+<td style="text-align: right;">8.576917</td>
+<td style="text-align: right;">0.0405004</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tmem8c</td>
+<td style="text-align: right;">8.666036</td>
+<td style="text-align: right;">0.0405004</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hspb7</td>
+<td style="text-align: right;">8.704779</td>
+<td style="text-align: right;">0.0405004</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mypn</td>
+<td style="text-align: right;">8.922345</td>
+<td style="text-align: right;">0.0405004</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Casq2</td>
+<td style="text-align: right;">9.486190</td>
+<td style="text-align: right;">0.0405004</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abra</td>
+<td style="text-align: right;">9.205786</td>
+<td style="text-align: right;">0.0426626</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kbtbd10</td>
+<td style="text-align: right;">8.060395</td>
+<td style="text-align: right;">0.0467207</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Acta1</td>
+<td style="text-align: right;">8.137384</td>
+<td style="text-align: right;">0.0495519</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Myom1</td>
+<td style="text-align: right;">8.260992</td>
+<td style="text-align: right;">0.0497182</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="summary-of-the-differential-expression-results" class="level2">
+<h2><span class="header-section-number">6.8</span> Summary of the differential expression results</h2>
+<p>32 differentially expressed genes were identified at a significance level of 0.05. Of these genes, 32 were upregulated and 0 were downregulated. These expression changes are depicted below.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">qplot</span>(Gene, log2FoldChange, <span class="dt">data =</span> de_genes)<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw">theme</span>(</a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">    <span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>)</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">  )</a></code></pre></div>
+<p><img src="images_20180224unnamed-chunk-15-1.png" style="display: block; margin: auto;" /></p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1><span class="header-section-number">7</span> Conclusion</h1>
+<p>Since the downloaded data is limited to 4 samples (just 1 per time point), the ability to identify differentially expressed genes is quite limited. Nevertheless several interesting differentially expressed genes were identified, including myoglobin (Mb) and Apobec2, which is an mRNA editing enzyme. In addition, performing diffusion mapping on such a small sample size will almost always fail to reveal reliable results.</p>
+</section>
+<section id="next-steps" class="level1">
+<h1><span class="header-section-number">8</span> Next steps</h1>
+<p>To overcome the limitations of small sample sizes, single-cell RNA-Seq data could be used. This will be the focus of a future analysis.</p>
+</section>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

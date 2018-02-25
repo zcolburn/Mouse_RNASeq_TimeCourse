@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+counts.txt
+gene_info.txt
+phenotypes.txt
+images_*
+Analysis_20180224_*
+cache/
