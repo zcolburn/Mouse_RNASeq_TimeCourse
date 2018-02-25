@@ -56,7 +56,7 @@ library(DESeq2)
 
 
 # Data acquisition
-```{r,cache=TRUE,message=FALSE,results='hide',eval=FALSE}
+```{r,cache=TRUE,message=FALSE,results='hide'}
 # Define data URLs.
 count_url <- "http://bowtie-bio.sourceforge.net/recount/countTables/trapnell_count_table.txt"
 phenotype_url <- "http://bowtie-bio.sourceforge.net/recount/phenotypeTables/trapnell_phenodata.txt"
@@ -72,11 +72,7 @@ download.file(count_url, count_file)
 download.file(phenotype_url, pheno_file)
 download.file(gene_info_url, gene_info_file)
 ```
-```{r, echo=FALSE}
-count_file <- "counts.txt"
-pheno_file <- "phenotypes.txt"
-gene_info_file <- "gene_info.txt"
-```
+
 
 # Data loading
 ```{r,message=FALSE}
